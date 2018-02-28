@@ -1,0 +1,317 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+
+#Snippets Code For HTML
+
+'.text.html':
+    'Initialize HTML5 structure':
+      'prefix': 'html'
+      'description': 'Initialize basic HTML5 structure with loaded Jquery and Boostrap library'
+      'body': """
+        <!doctype html>
+        <html lang="en">
+        <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Lilca Dinh">
+        <meta charset="utf-8">
+        <title>LILCASOFT.INFO WEBSITE</title>
+        <!--STYLE SHEET INCLUDED BOOTSTRAP-->
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+        <link rel="icon" href="images/logo.ico" type="image/x-icon">
+
+        <!--JAVASCRIPT LIBRARY INCLUDED JQUERY, BOOSTRAP-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        </head>
+        <body>
+            <!--PLACE CONTENT HERE -->
+        </body>
+        </html>
+      """
+    'Initialize HTML link structure':
+      'prefix': 'html-link'
+      'description': 'Initialize stylsheet link'
+      'body': """
+        <link rel="stylesheet" type="text/css" href="style.css">
+      """
+
+    'Initialize Basic Form structure':
+      'prefix': 'html-form'
+      'description': 'Initialize Basic Form structure'
+      'body': """
+            <form action="#" method="post">
+              <fieldset>
+                <legend>Form Title</legend>
+              <div class="form-control">
+                <label for=""></label>
+                <input type="text" name="" id="" value="" />
+              </div>
+              <input type="submit" name="btnSubmit" id="btnSubmit" value="Submit"/>
+              </fieldset>
+            </form>
+      """
+#Canvas syntax
+
+    'Initialize Canvas Object':
+      'prefix': 'canvas-init'
+      'description': 'Declare canvas object to use in javascript'
+      'body': """
+            var canvas = document.getElementById("canvas1");
+            var ctx = canvas.getContext("2d");
+      """
+
+    'Initialize fillRect method of Canvas':
+      'prefix': 'canvas-fillRect'
+      'description': 'The fillRect() method draws a "filled" rectangle. The default color of the fill is black.'
+      'body': """
+            ctx.fillRect(x,y,width,height);
+      """
+
+    'Initialize Rect method of Canvas':
+      'prefix': 'canvas-rect'
+      'description': 'The rect() method creates a rectangle.'
+      'body': """
+            ctx.rect(x,y,width,height);
+            ctx.stroke();
+      """
+
+    'Initialize fillStyle method of Canvas':
+      'prefix': 'canvas-fillStyle'
+      'description': 'The fillStyle property sets or returns the color, gradient, or pattern used to fill the drawing.'
+      'body': """
+            ctx.fillStyle = "rgba(r,g,b,a)";
+      """
+
+    'Initialize Custom Shape Drawing method of Canvas':
+      'prefix': 'canvas-customshape'
+      'description': 'Initialize Custom Shape Drawing method of Canvas'
+      'body': """
+            ctx.beginPath();
+            ctx.moveTo(100,50);
+            ctx.lineTo(130,100);
+            ctx.lineTo(70,100);
+            ctx.closePath();
+            ctx.stroke();
+      """
+
+
+#Snippets Code for XML language
+
+'.text.xml':
+    'Initialize XML schema structure':
+      'prefix': 'xml-schema'
+      'description': 'Initialize the XML schema structure for you.'
+      'body': """
+      <?xml version="1.0" encoding="utf-8"?>
+      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        //start your xs element here
+      </xs:schema>
+      """
+
+    'Initialize XML element-parent structure':
+      'prefix': 'xml-element-parent'
+      'description': 'Initialize the XML parent element structure for you.'
+      'body': """
+      <xs:element name=""></xs:element>
+      """
+    'Initialize XML element-child structure':
+      'prefix': 'xml-element-child'
+      'description': 'Initialize the XML child element structure for you.'
+      'body': """
+      <xs:element name="" type="xs:string" maxOccurs="1"/>
+      """
+
+    'Initialize XML attribute structure':
+      'prefix': 'xml-attribute'
+      'description': 'Initialize the XML attribute structure for you.'
+      'body': """
+      <xs:attribute name="" type="xs:string" use="required" />
+      """
+
+    'Initialize XML structure':
+      'prefix': 'xml'
+      'description': 'Initialize the XML structure for you.'
+      'body': """
+      <?xml version="1.0" encoding="utf-8"?>
+      <root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="schema-file.xsd">
+          //Start your XML structure here
+      </root>
+      """
+
+    'XML complexType syntax':
+      'prefix': 'xml-complex'
+      'description': 'Initialize the XML complexType for you.'
+      'body': """
+          <xs:complexType>
+            <xs:sequence>
+              //Place sequence of child element here
+            </xs:sequence>
+            <xs:attribute name="" type="" use="required" />
+          </xs:complexType>
+      """
+
+    'XML simpleType Enumberation syntax':
+      'prefix': 'xml-enum'
+      'description': 'Initialize the XML simpleType Enumberation for you.'
+      'body': """
+          <xs:simpleType name="">
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="yes"/>
+              <xs:enumeration value="no"/>
+            </xs:restriction>
+          </xs:simpleType>
+      """
+
+    'XML simpleType Range syntax':
+      'prefix': 'xml-range'
+      'description': 'Initialize the XML simpleType Range(min,max) for you.'
+      'body': """
+          <xs:simpleType name="rating">
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+              <xs:maxInclusive value="5"/>
+            </xs:restriction>
+          </xs:simpleType>
+      """
+
+    'XML simpleType Regular Expression syntax':
+      'prefix': 'xml-reg'
+      'description': 'Initialize the XML simpleType Regular Expression for you.'
+      'body': """
+          <xs:simpleType name="sku">
+            <xs:restriction base="xs:string">
+              <xs:pattern value="\d{5}-[a-z]{3}-\d{2}"/>
+            </xs:restriction>
+          </xs:simpleType>
+      """
+
+    'XML simpleContent syntax':
+      'prefix': 'xml-simple'
+      'description': 'Initialize the XML simpleContent for you.'
+      'body': """
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+      """
+#DTD XML
+    'XML DTD Attribute list':
+        'prefix': 'dtd-attribute'
+        'description': 'Initialize the XML DTD attribute list for you.'
+        'body': """
+          <!ATTLIST [element_name] [CDATA | ID | IDREF | ENTITY | NMTOKEN] [#REQUIRED | #IMPLIED | (VAL1 | VAL2) | FIXED]>
+    """
+
+    'XML DTD Element Parent':
+        'prefix': 'dtd-element-parent'
+        'description': 'Initialize the XML DTD element parent for you.'
+        'body': """
+          <!ELEMENT element_name (child1, child2)>
+    """
+
+    'XML DTD Element Child':
+        'prefix': 'dtd-element-child'
+        'description': 'Initialize the XML DTD element child for you.'
+        'body': """
+          <!ELEMENT element_name #PCDATA>
+    """
+
+#XSL
+
+    'XSL Structure':
+        'prefix': 'xsl'
+        'description': 'Initialize the XSL structure for you.'
+        'body': """
+          <!--
+          Place this code to xml file
+          <?xml-stylesheet type="text/xsl" href="filename.xsl" ?>
+          -->
+          <?xml version="1.0" encoding="utf-8"?>
+          <xsl:stylesheet version="1.0"
+           xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+           <xsl:template match="/">
+           <html>
+             <head>
+               <title>Page Title</title>
+             </head>
+             <body>
+               //Place your code here
+             </body>
+           </html>
+           </xsl:template>
+          </xsl:stylesheet>
+
+    """
+
+    'XSL Value Of Syntax':
+        'prefix': 'xsl-value-of'
+        'description': 'Initialize the XSL Value Of Syntax.'
+        'body': """
+          <xsl:value-of select=""/>
+    """
+
+    'XSL Foreach Syntax':
+        'prefix': 'xsl-foreach'
+        'description': 'Initialize the XSL Foreach Syntax'
+        'body': """
+          <xsl:for-each select="">
+            //place your code here
+          </xsl:for-each>
+    """
+
+    'XSL Choose Syntax':
+        'prefix': 'xsl-choose'
+        'description': 'Initialize the XSL Choose Syntax to do IF ELSE Statement'
+        'body': """
+          <xsl:choose>
+            <xsl:when test="test_condition">
+              //place output here
+            </xsl:when>
+            <xsl:otherwise>
+              //place output here
+            </xsl:otherwise>
+          </xsl:choose>
+    """
+
+    'XSL Template Syntax':
+        'prefix': 'xsl-template'
+        'description': 'Create the XSL Template'
+        'body': """
+          <xsl:template match="element_name">
+            //place output here
+          </xsl:template>
+    """
+
+    'XSL Apply Template Syntax':
+        'prefix': 'xsl-template-apply'
+        'description': 'Create the XSL Apply Template'
+        'body': """
+          <xsl:apply-templates select="element_name" />
+    """
