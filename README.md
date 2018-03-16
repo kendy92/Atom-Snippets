@@ -6,7 +6,7 @@ Open Atom -> Atom Tab -> Snippets and then copy everything from atom-snippets co
 
 Support XML, HTML and Canvas, PDO but it will be support more language in the future.
 
-**Syntax for XML:**
+**Syntax:**
 Type xml, html, canvas, pdo then it will prompt all support snippets.
 
 FREE OF USE. CREDIT TO **LILCASOFT.INFO**
