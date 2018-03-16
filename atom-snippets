@@ -1,5 +1,5 @@
-# CODED BY LILCASOFT.INFO 2018
-# PLEASE CREDIT TO ME.
+# Your snippets
+#
 # Atom snippets allow you to enter a simple prefix in the editor and hit tab to
 # expand the prefix into a larger code block with templated values.
 #
@@ -119,6 +119,31 @@
             ctx.stroke();
       """
 
+#JAVASCRIPT
+
+'.source.js':
+    'Initialize XML DOM structure to manipulate XML data in Javascript':
+      'prefix': 'xml-dom'
+      'description': 'Initialize XML DOM structure'
+      'body': """
+        var xml = new XMLHttpRequest();
+        xml.onload = function() {
+          var doc = xml.responseXML;
+          var div = document.getElementById("result");
+          var fnames = doc.getElementsByTagName('first');
+          for (var i = 0; i < fnames.length; i++) {
+            div.innerHTML += fnames[i].textContent + "<br/>";
+          }
+        }
+        xml.onerror = function(){
+          console.log("Error retrieveing XML file...");
+        }
+
+        xml.open("GET", "people.xml");
+        xml.responseType = "document";
+        xml.send();
+      """
+
 
 #Snippets Code for XML language
 
@@ -221,6 +246,7 @@
             </xs:extension>
           </xs:simpleContent>
       """
+
 #DTD XML
     'XML DTD Attribute list':
         'prefix': 'dtd-attribute'
@@ -315,3 +341,215 @@
         'body': """
           <xsl:apply-templates select="element_name" />
     """
+#Snippets code for php
+
+'.text.html.php':
+    'Initialize PHP PDO Class Structure':
+      'prefix': 'pdo'
+      'description': 'Initialize PHP PDO Class Structure with CRUD'
+      'body': """
+        <?php
+        class DB {
+          private static $host = "mysql:host=localhost; dbname=lilca";
+          private static $user = "root";
+          private static $pass = "";
+
+          public function __construct() {
+
+          }
+
+          public static function connectDB() {
+            try {
+              $conn = new PDO(self::$host, self::$user, self::$pass);
+              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+              return $e.getMessage();
+            }
+            return $conn;
+          }
+
+          public static function displayPlayers() {
+            try {
+              $conn = self::connectDB();
+              $conn->query("SET NAMES utf8");
+              $cmd = $conn->prepare("SELECT * FROM gamecenter ORDER BY id DESC");
+              $cmd->setFetchMode(PDO::FETCH_OBJ);
+              $cmd->execute();
+              return $cmd->fetchAll();
+            } catch (PDOException $e) {
+              return $e.getMessage();
+            }
+
+
+          }
+
+          public static function findById($id) {
+            try {
+              $conn = self::connectDB();
+              $conn->query("SET NAMES utf8");
+              $cmd = $conn->prepare("SELECT * FROM gamecenter WHERE id = :id");
+              $cmd->setFetchMode(PDO::FETCH_ASSOC);
+              $cmd->bindParam(':id', $id);
+              $cmd->execute();
+              return $cmd->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+              return $e.getMessage();
+            }
+
+          }
+
+          public static function addPlayer($name, $score, $game){
+            try {
+              $conn = self::connectDB();
+              $conn->query("SET NAMES utf8");
+              $cmd = $conn->prepare("INSERT INTO gamecenter(name,score,game) VALUES(:name, :score, :game)");
+              $cmd->bindParam(':name', $name);
+              $cmd->bindParam(':score', $score);
+              $cmd->bindParam(':game', $game);
+              $count = $cmd->execute();
+              return $count;
+            } catch (PDOException $e) {
+              return $e.getMessage();
+            }
+
+          }
+
+          public static function updatePlayer($name,$score,$game,$id) {
+            try {
+              $conn = self::connectDB();
+              $conn->query("SET NAMES utf8");
+              $cmd = $conn->prepare("UPDATE gamecenter SET name = :name, score = :score, game = :game WHERE id= :id");
+              $cmd->bindParam(':name', $name);
+              $cmd->bindParam(':score', $score);
+              $cmd->bindParam(':game', $game);
+              $cmd->bindParam(':id', $id);
+              $count = $cmd->execute();
+              return $count;
+            } catch (PDOException $e) {
+              return $e.getMessage();
+            }
+
+          }
+
+          public static function deletePlayer($id) {
+            try {
+              $conn = self::connectDB();
+              $cmd = $conn->prepare("DELETE FROM gamecenter WHERE id = :id");
+              $cmd->bindParam(':id', $id);
+              $count = $cmd->execute();
+              return $count;
+            } catch (PDOException $e) {
+              return $e.getMessage();
+            }
+
+          }
+        }
+         ?>
+
+      """
+
+    'Initialize PHP PDO Insert function':
+      'prefix': 'pdo-create'
+      'description': 'Initialize PHP PDO Insert function'
+      'body': """
+          public static function addPlayer($name, $score, $game){
+            try {
+              $conn = self::connectDB();
+              $conn->query("SET NAMES utf8");
+              $cmd = $conn->prepare("INSERT INTO gamecenter(name,score,game) VALUES(:name, :score, :game)");
+              $cmd->bindParam(':name', $name);
+              $cmd->bindParam(':score', $score);
+              $cmd->bindParam(':game', $game);
+              $count = $cmd->execute();
+              return $count;
+            } catch (PDOException $e) {
+              return $e->getMessage();
+            }
+
+          }
+
+      """
+
+    'Initialize PHP PDO Edit function':
+      'prefix': 'pdo-update'
+      'description': 'Initialize PHP PDO Edit function'
+      'body': """
+            public static function updatePlayer($name,$score,$game,$id) {
+              try {
+                $conn = self::connectDB();
+                $conn->query("SET NAMES utf8");
+                $cmd = $conn->prepare("UPDATE gamecenter SET name = :name, score = :score, game = :game WHERE id= :id");
+                $cmd->bindParam(':name', $name);
+                $cmd->bindParam(':score', $score);
+                $cmd->bindParam(':game', $game);
+                $cmd->bindParam(':id', $id);
+                $count = $cmd->execute();
+                return $count;
+              } catch (PDOException $e) {
+                return $e->getMessage();
+              }
+
+            }
+
+      """
+
+    'Initialize PHP PDO Delete function':
+      'prefix': 'pdo-delete'
+      'description': 'Initialize PHP PDO Delete function'
+      'body': """
+              public static function deletePlayer($id) {
+                try {
+                  $conn = self::connectDB();
+                  $cmd = $conn->prepare("DELETE FROM gamecenter WHERE id = :id");
+                  $cmd->bindParam(':id', $id);
+                  $count = $cmd->execute();
+                  return $count;
+                } catch (PDOException $e) {
+                  return $e->getMessage();
+                }
+
+              }
+
+      """
+
+    'Initialize PHP PDO Display function':
+      'prefix': 'pdo-show'
+      'description': 'Initialize PHP PDO Display function'
+      'body': """
+              public static function displayPlayers() {
+                try {
+                  $conn = self::connectDB();
+                  $conn->query("SET NAMES utf8");
+                  $cmd = $conn->prepare("SELECT * FROM gamecenter ORDER BY id DESC");
+                  $cmd->setFetchMode(PDO::FETCH_OBJ);
+                  $cmd->execute();
+                  return $cmd->fetchAll();
+                } catch (PDOException $e) {
+                  return $e->getMessage();
+                }
+
+
+              }
+
+      """
+
+    'Initialize PHP PDO Find By ID function':
+      'prefix': 'pdo-findbyid'
+      'description': 'Initialize PHP PDO Find By ID function'
+      'body': """
+                public static function findById($id) {
+                  try {
+                    $conn = self::connectDB();
+                    $conn->query("SET NAMES utf8");
+                    $cmd = $conn->prepare("SELECT * FROM gamecenter WHERE id = :id");
+                    $cmd->setFetchMode(PDO::FETCH_ASSOC);
+                    $cmd->bindParam(':id', $id);
+                    $cmd->execute();
+                    return $cmd->fetch(PDO::FETCH_ASSOC);
+                  } catch (PDOException $e) {
+                    return $e->getMessage();
+                  }
+
+                }
+
+      """
